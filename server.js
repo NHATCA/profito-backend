@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   });
 });
 app.use(
-  "/graphql",
+  "/graphql2",
   graphqlHTTP({
     schema: schema,
     graphiql: true
