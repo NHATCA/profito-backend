@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.js --exec babel-node -e js",
-    "babel-version": "babel --version"
+    "babel-version": "babel --version",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/index.js",
+    "build-babel": "babel -d ./build ./src -s",
+    "clean": "rm -rf build && mkdir build"
+
+
   },
   "keywords": [],
   "author": "",

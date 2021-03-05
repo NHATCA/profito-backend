@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import schema from "./schema";
+import schema from "../schema";
 import cors from "cors";
 const { graphqlHTTP } = require('express-graphql');
 
