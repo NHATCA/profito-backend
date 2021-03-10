@@ -6,8 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node -r esm index.js --exec babel-node -e js"
-
-
   },
   "repository": {
     "type": "git",
@@ -21,6 +19,7 @@
   "homepage": "https://github.com/ducttph/grpahQL-backend#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.0",
