@@ -14,7 +14,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
+}).then(then => console.log(then)).catch(er => console.log(er));
 
 app.use(cors());
 

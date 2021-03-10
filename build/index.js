@@ -29,6 +29,10 @@ _mongoose2.default.Promise = global.Promise;
 _mongoose2.default.connect(URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
+}).then(function (then) {
+  return console.log(then);
+}).catch(function (er) {
+  return console.log(er);
 });
 
 app.use((0, _cors2.default)());
