@@ -6,7 +6,7 @@ const { graphqlHTTP } = require('express-graphql');
 
 
 const app = express();
-const PORT = 4300;
+const PORT = process.env.PORT || 4300;
 const URI = "mongodb+srv://GraphQL_Blog:HelloworlD@cluster0.qvr6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 
