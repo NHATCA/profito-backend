@@ -1,31 +1,24 @@
 {
-  "name": "GraphQLapi",
+  "name": "grapql-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && npm run build-babel",
-    "start": "node index.js",
-    "build-babel": "babel -d ./build ./src -s",
-    "clean": "rm -rf build && mkdir build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ducttph/grpahQL-backend.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ducttph/grpahQL-backend/issues"
+  },
+  "homepage": "https://github.com/ducttph/grpahQL-backend#readme",
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
-    "graphql": "^15.5.0",
-    "graphql-tools": "^7.0.4",
-    "mongoose": "^5.11.18",
-    "nodemon": "^2.0.7"
-  },
-  "devDependencies": {
-    "@babel/node": "^7.13.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "graphql": "^15.5.0"
   }
 }
