@@ -1,52 +1,31 @@
-"use strict";
+'use strict';
 
-var _express = require("express");
-
-var _express2 = _interopRequireDefault(_express);
-
-var _mongoose = require("mongoose");
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-var _schema = require("./schema");
-
-var _schema2 = _interopRequireDefault(_schema);
-
-var _cors = require("cors");
-
-var _cors2 = _interopRequireDefault(_cors);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var express = require('express');
 
 var _require = require('express-graphql'),
     graphqlHTTP = _require.graphqlHTTP;
 
-var app = (0, _express2.default)();
-var PORT = 4300;
-var URI = "mongodb+srv://GraphQL_Blog:HelloworlD@cluster0.qvr6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var _require2 = require('graphql'),
+    buildSchema = _require2.buildSchema;
 
-_mongoose2.default.Promise = global.Promise;
-_mongoose2.default.connect(URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(function (then) {
-  return console.log(then);
-}).catch(function (er) {
-  return console.log(er);
-});
+// Construct a schema, using GraphQL schema language
 
-app.use((0, _cors2.default)());
 
-app.get("/", function (req, res) {
-  res.json({
-    message: "Notetaking API v1"
-  });
-});
-app.use("/graphql2", graphqlHTTP({
-  schema: _schema2.default,
+var schema = buildSchema('\n  type Query {\n    hello: String\n  }\n');
+
+// The root provides a resolver function for each API endpoint
+var root = {
+  hello: function hello() {
+    return 'Hello world!';
+  }
+};
+
+var app = express();
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
   graphiql: true
 }));
-app.listen(PORT, function () {
-  console.log("Server is listening on PORT " + PORT);
-});
+app.listen(4000);
+console.log('Running a GraphQL API server at http://localhost:4000/graphql');
 //# sourceMappingURL=index.js.map
