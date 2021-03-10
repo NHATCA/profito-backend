@@ -1,26 +1,35 @@
-var express = require('express');
-var { graphqlHTTP } = require('express-graphql');
-var { buildSchema } = require('graphql');
+import express from "express";
+import mongoose from "mongoose";
+import schema from "./src/schema";
+import cors from "cors";
+const { graphqlHTTP } = require('express-graphql');
 
-// Construct a schema, using GraphQL schema language
-var schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
 
-// The root provides a resolver function for each API endpoint
-var root = {
-    hello: () => {
-        return 'Hello world!';
-    },
-};
+const app = express();
+const PORT = 4300;
+const URI = "mongodb+srv://GraphQL_Blog:HelloworlD@cluster0.qvr6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
-var app = express();
-app.use('/graphql', graphqlHTTP({
+
+mongoose.Promise = global.Promise;
+mongoose.connect(URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+app.use(cors());
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "Notetaking API v1"
+  });
+});
+app.use(
+  "/graphql",
+  graphqlHTTP({
     schema: schema,
-    rootValue: root,
-    graphiql: true,
-}));
-app.listen(process.env.PORT || 4000);
-console.log('Running a GraphQL API server at http://localhost:4000/graphql')
+    graphiql: true
+  })
+);
+app.listen(PORT, () => {
+  console.log(`Server is listening on PORT ${PORT}`);
+});
