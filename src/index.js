@@ -23,13 +23,7 @@ app.get("/", (req, res) => {
     message: "Notetaking API v1"
   });
 });
-app.use(
-  "/graphql2",
-  graphqlHTTP({
-    schema: schema,
-    graphiql: true
-  })
-);
+
 app.listen(PORT, () => {
   console.log(`Server is listening on PORT ${PORT}`);
 });
