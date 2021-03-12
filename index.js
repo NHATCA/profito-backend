@@ -20,7 +20,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Notetaking API v1"
+    message: "API"
   });
 });
 app.use(
@@ -31,5 +31,5 @@ app.use(
   })
 );
 app.listen(PORT, () => {
-  console.log(`Server is listening on PORT ${PORT}`);
+  console.log(`Server is listening on PORT http://localhost:${PORT}/graphql`);
 });
