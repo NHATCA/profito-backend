@@ -1,4 +1,4 @@
-import Note from "./models/note";
+import Note from "../models/note";
 export const resolvers = {
   Query: {
     async getNote(root, { _id }) {

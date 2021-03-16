@@ -1,13 +1,15 @@
 import express from "express";
 import mongoose from "mongoose";
-import schema from "./src/schema";
+import noteSchema from "./src/schema/note";
+import userSchema from './src/schema/auth'
 import cors from "cors";
 const { graphqlHTTP } = require('express-graphql');
 
 
 const app = express();
 const PORT = process.env.PORT || 4300;
-const URI = "mongodb+srv://GraphQL_Blog:HelloworlD@cluster0.qvr6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const passWord = `HelloworlD`
+const URI = `mongodb+srv://GraphQL_Blog:${passWord}@cluster0.qvr6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
 
 mongoose.Promise = global.Promise;
@@ -26,7 +28,7 @@ app.get("/", (req, res) => {
 app.use(
   "/graphql",
   graphqlHTTP({
-    schema: schema,
+    schema: userSchema,
     graphiql: true
   })
 );
