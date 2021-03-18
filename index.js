@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import noteSchema from "./src/schema/note";
 import userSchema from './src/schema/auth'
 import cors from "cors";
+import {mergeSchemas} from 'graphql-tools'
+
 const { graphqlHTTP } = require('express-graphql');
 
 
@@ -12,6 +14,12 @@ const passWord = `HelloworlD`
 const URI = `mongodb+srv://GraphQL_Blog:${passWord}@cluster0.qvr6v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
 
 
+const schema = mergeSchemas({
+  schemas: [
+    noteSchema,
+    userSchema,
+  ],
+});
 mongoose.Promise = global.Promise;
 mongoose.connect(URI, {
   useNewUrlParser: true,
@@ -28,7 +36,7 @@ app.get("/", (req, res) => {
 app.use(
   "/graphql",
   graphqlHTTP({
-    schema: userSchema,
+    schema: schema,
     graphiql: true
   })
 );

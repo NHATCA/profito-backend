@@ -8,4 +8,6 @@ mutation{
     content:"dsadsa"}){
     _id
   }
-}
+} 
+
+   "start": "node -r esm index.js --exec babel-node -e js"

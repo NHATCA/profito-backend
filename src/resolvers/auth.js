@@ -1,11 +1,11 @@
 import User from "../models/auth";
 export const resolvers = {
   Query: {
-    async getAccount(root, { _id }) {
-      return await User.findById(_id);
+    async getAccount(root, { userName }) {
+      console.log(userName, "userName")
+      return await User.find(use => {console.log(use,"ss")});
     },
     async allAccount() {
-        console.log(User.find(),"dsa")
       return await User.find();
     }
   },

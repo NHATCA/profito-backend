@@ -10,6 +10,7 @@ export const resolvers = {
   },
   Mutation: {
     async createNote(root, { input }) {
+      console.log(input,"input")
       return await Note.create(input);
     },
     async updateNote(root, { _id, input }) {
