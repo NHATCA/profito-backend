@@ -1,4 +1,3 @@
-https://www.youtube.com/watch?v=-VgeUqpPTh4
 
 ### create note
 mutation{
@@ -11,3 +10,5 @@ mutation{
 } 
 
    "start": "node -r esm index.js --exec babel-node -e js"
+   "start": "nodemon  index.js --exec babel-node -e js"
+
