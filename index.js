@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import noteSchema from "./src/schema/note";
 import userSchema from './src/schema/auth'
 import cors from "cors";
-import {mergeSchemas} from 'graphql-tools'
+import { mergeSchemas } from 'graphql-tools'
 
 const { graphqlHTTP } = require('express-graphql');
 

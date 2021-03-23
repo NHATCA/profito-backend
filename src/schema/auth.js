@@ -3,12 +3,12 @@ import { resolvers } from "../resolvers/auth";
 
 const typeDefs = `
  type Account {
-  _id: ID!
-  userName: String!,
-  passWord: String!
+  _id: ID
+  userName: String,
+  passWord: String
  }
  type Query {
-   getAccount(userName: String!): Account
+   getAccount(account: AccountInput): Account
    allAccount: [Account]
  }
  input AccountInput {

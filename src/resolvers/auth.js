@@ -1,18 +1,20 @@
 import User from "../models/auth";
+import jwt from 'jsonwebtoken'
+var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+
 export const resolvers = {
   Query: {
-    async getAccount(root, { userName }) {
-      console.log(userName, "userName")
-      return await User.find(use => {console.log(use,"ss")});
+    async getAccount(root, account) {
+      return await User.find();
+
     },
     async allAccount() {
       return await User.find();
     }
   },
   Mutation: {
-    async createAccount(root, { input }) {
-      console.log(input)
-      return await User.create(input);
+    async createAccount(root, { user }) {
+      return await User.create(user);
     },
     async updateAccount(root, { _id, input }) {
       return await User.findOneAndUpdate({ _id }, input, { new: true });
